@@ -78,7 +78,7 @@
   }
 
   function applyGuest(guest) {
-    $("greetingNames").textContent = guest.greeting + ", " + formatNames(guest.names);
+    $("greetingText").textContent = guest.greeting;
     document.body.classList.add("personalized");
     $("missingBlock").hidden = true;
     document.title = "Chrzest Gniewosława — zaproszenie dla " + formatNames(guest.names);
@@ -87,7 +87,7 @@
   function showMissing() {
     document.body.classList.remove("personalized");
     $("missingBlock").hidden = false;
-    $("greetingNames").textContent = "—";
+    $("greetingText").textContent = "Drogi Gościu";
   }
 
   function watchOnlineStatus() {

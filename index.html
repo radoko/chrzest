@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#7aa7d9" />
+  <meta name="theme-color" content="#eadfc8" />
   <title>Chrzest Gniewosława</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
@@ -11,76 +11,142 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Chrzest Gniewosława" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Cormorant+SC:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="card" id="card">
-    <div class="card__header">
-      <div class="ornament" aria-hidden="true">
-        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
-          <path d="M40 12 L40 68 M12 40 L68 40" stroke="currentColor" stroke-width="1" opacity="0.5"/>
-          <path d="M40 22c-4 6-10 6-10 14s6 12 10 12 10-4 10-12-6-8-10-14z" fill="currentColor" opacity="0.15"/>
-          <path d="M40 28v24 M30 40h20" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <main class="invitation">
+    <article class="card" id="card">
+      <svg class="corner corner--tl" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#corner-flourish"/>
+      </svg>
+      <svg class="corner corner--tr" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#corner-flourish"/>
+      </svg>
+      <svg class="corner corner--bl" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#corner-flourish"/>
+      </svg>
+      <svg class="corner corner--br" viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#corner-flourish"/>
+      </svg>
+
+      <header class="card__header">
+        <svg class="monogram" viewBox="0 0 140 180" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path d="M70 12 C 44 38, 44 68, 70 88 C 96 68, 96 38, 70 12 Z" opacity="0.35"/>
+            <circle cx="70" cy="50" r="3" fill="currentColor" opacity="0.5"/>
+            <path d="M35 110 Q 70 100 105 110" opacity="0.5"/>
+            <path d="M30 118 Q 70 106 110 118" opacity="0.35"/>
+          </g>
+          <g transform="translate(70 135)" fill="currentColor" opacity="0.85">
+            <rect x="-1.2" y="-22" width="2.4" height="44" rx="1"/>
+            <rect x="-14" y="-7" width="28" height="2.4" rx="1"/>
+          </g>
         </svg>
-      </div>
-      <p class="eyebrow">Z radością zapraszamy na</p>
-      <h1 class="title">Chrzest Święty</h1>
-      <p class="childname" id="childName">Gniewosława Okomskiego</p>
-    </div>
+        <p class="eyebrow">z pokorą i radością</p>
+        <h1 class="title">
+          <span class="title__line1">Chrzest</span>
+          <span class="title__line2">Święty</span>
+        </h1>
+        <div class="filigree" aria-hidden="true">
+          <svg viewBox="0 0 300 24">
+            <path d="M0 12 H110 M190 12 H300" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.55"/>
+            <path d="M120 12 C 128 6, 138 6, 146 12 C 154 18, 164 18, 172 12 C 180 6, 190 6, 198 12" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.8"/>
+            <circle cx="150" cy="12" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <p class="childname">
+          <span class="childname__label">z udziałem</span>
+          <span class="childname__name" id="childName">Gniewosława Okomskiego</span>
+        </p>
+      </header>
 
-    <section class="greeting" id="greetingBlock">
-      <p class="greeting__label">Zaproszenie dla:</p>
-      <p class="greeting__names" id="greetingNames">—</p>
-    </section>
+      <section class="greeting" id="greetingBlock">
+        <p class="greeting__script" id="greetingText">—</p>
+        <p class="greeting__subtitle">mamy zaszczyt zaprosić na uroczystość Sakramentu Chrztu Świętego</p>
+      </section>
 
-    <section class="details">
-      <div class="detail">
+      <section class="details">
         <p class="detail__date" id="eventDate">niedziela, 21 czerwca 2026</p>
-      </div>
 
-      <div class="detail detail--event">
-        <p class="detail__time" id="ceremonyTime">13:00</p>
-        <p class="detail__kind">Msza Święta</p>
-        <p class="detail__place" id="ceremonyPlace">Kościół pw. Najświętszego Serca Pana Jezusa</p>
-        <p class="detail__hint" id="ceremonyHint">Koszutka, Katowice</p>
-        <a class="detail__link" id="ceremonyLink" href="https://koszutka.pl/" target="_blank" rel="noopener">
-          <span>koszutka.pl</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
+        <div class="card__ornament-row" aria-hidden="true">
+          <span class="card__ornament-line"></span>
+          <span class="card__ornament-mark">✦</span>
+          <span class="card__ornament-line"></span>
+        </div>
 
-      <div class="divider" aria-hidden="true">
-        <span></span><em>a następnie</em><span></span>
-      </div>
+        <div class="detail detail--event">
+          <p class="detail__kind">Msza Święta</p>
+          <p class="detail__time" id="ceremonyTime">13:00</p>
+          <p class="detail__place" id="ceremonyPlace">Kościół pw. Najświętszego Serca Pana Jezusa</p>
+          <p class="detail__hint" id="ceremonyHint">Koszutka, Katowice</p>
+          <a class="detail__link" id="ceremonyLink" href="https://koszutka.pl/" target="_blank" rel="noopener">
+            <span>koszutka.pl</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
 
-      <div class="detail detail--event">
-        <p class="detail__time" id="receptionTime">15:00</p>
-        <p class="detail__kind">Przyjęcie</p>
-        <p class="detail__place" id="receptionPlace">Restauracja Smak Róży</p>
-        <p class="detail__hint" id="receptionHint">przyjęcie rodzinne</p>
-        <a class="detail__link" id="receptionLink" href="https://smakrozy.pl/" target="_blank" rel="noopener">
-          <span>smakrozy.pl</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="divider" aria-hidden="true">
+          <span></span><em>oraz na przyjęcie</em><span></span>
+        </div>
+
+        <div class="detail detail--event">
+          <p class="detail__kind">Przyjęcie rodzinne</p>
+          <p class="detail__time" id="receptionTime">15:00</p>
+          <p class="detail__place" id="receptionPlace">Restauracja Smak Róży</p>
+          <p class="detail__hint" id="receptionHint">poczęstunek i wspólna celebracja</p>
+          <a class="detail__link" id="receptionLink" href="https://smakrozy.pl/" target="_blank" rel="noopener">
+            <span>smakrozy.pl</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <footer class="card__footer">
+        <div class="card__ornament-row" aria-hidden="true">
+          <span class="card__ornament-line"></span>
+          <span class="card__ornament-mark">✦</span>
+          <span class="card__ornament-line"></span>
+        </div>
+        <p class="parents__label">z wyrazami wdzięczności</p>
+        <p class="parents__names" id="parentsNames">Patrycja i Radosław Okomscy</p>
+        <p class="parents__verse">„Pozwólcie dzieciom przychodzić do Mnie" <span class="parents__ref">Mk 10,14</span></p>
+      </footer>
+    </article>
+
+    <section class="missing" id="missingBlock" hidden>
+      <div class="missing__inner">
+        <h2>Zaproszenie imienne</h2>
+        <p>Aby zobaczyć spersonalizowane zaproszenie, otwórz przesłany link z unikalnym kodem.</p>
+        <p class="missing__hint">przykład: <code>…/#twoj-kod</code></p>
       </div>
     </section>
-
-    <footer class="card__footer">
-      <p class="parents">z wyrazami wdzięczności</p>
-      <p class="parents__names" id="parentsNames">Patrycja i Radosław Okomscy</p>
-    </footer>
   </main>
 
-  <section class="missing" id="missingBlock" hidden>
-    <div class="missing__inner">
-      <h2>Zaproszenie</h2>
-      <p>Aby zobaczyć spersonalizowane zaproszenie, otwórz przesłany link z unikalnym kodem.</p>
-      <p class="missing__hint">Przykład: <code>…/#twoj-kod</code></p>
-    </div>
-  </section>
+  <div class="offline-pill" id="offlinePill" hidden>tryb offline</div>
 
-  <div class="offline-pill" id="offlinePill" hidden>Tryb offline</div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="corner-flourish" viewBox="0 0 120 120">
+        <g fill="none" stroke="currentColor" stroke-width="0.9" stroke-linecap="round">
+          <path d="M10 10 C 40 10, 60 20, 70 50 C 80 80, 95 95, 110 100"/>
+          <path d="M10 20 C 35 22, 52 32, 60 55"/>
+          <path d="M20 10 C 22 35, 32 52, 55 60"/>
+          <circle cx="70" cy="50" r="2" fill="currentColor"/>
+          <circle cx="50" cy="70" r="1.5" fill="currentColor"/>
+          <path d="M10 40 Q 18 42, 22 50 Q 18 58, 10 60" opacity="0.6"/>
+          <path d="M40 10 Q 42 18, 50 22 Q 58 18, 60 10" opacity="0.6"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
   <script src="app.js"></script>
 </body>

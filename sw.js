@@ -1,4 +1,5 @@
-const CACHE_VERSION = "gniewko-chrzest-v1";
+const CACHE_VERSION = "gniewko-chrzest-v2";
+const FONTS_CACHE = "gniewko-chrzest-fonts-v1";
 const CORE_ASSETS = [
   "./",
   "./index.html",
@@ -32,7 +33,9 @@ self.addEventListener("activate", (event) => {
       .keys()
       .then((keys) =>
         Promise.all(
-          keys.filter((k) => k !== CACHE_VERSION).map((k) => caches.delete(k))
+          keys
+            .filter((k) => k !== CACHE_VERSION && k !== FONTS_CACHE)
+            .map((k) => caches.delete(k))
         )
       )
       .then(() => self.clients.claim())
@@ -44,6 +47,24 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
 
   const url = new URL(req.url);
+
+  if (url.host === "fonts.googleapis.com" || url.host === "fonts.gstatic.com") {
+    event.respondWith(
+      caches.open(FONTS_CACHE).then((cache) =>
+        cache.match(req).then((cached) => {
+          const network = fetch(req)
+            .then((res) => {
+              if (res && res.status === 200) cache.put(req, res.clone());
+              return res;
+            })
+            .catch(() => cached);
+          return cached || network;
+        })
+      )
+    );
+    return;
+  }
+
   if (url.origin !== self.location.origin) return;
 
   if (req.mode === "navigate") {
