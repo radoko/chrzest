@@ -29,15 +29,11 @@
     },
     "mh-family-7b1c": {
       "greeting": "Droga Rodzino Meinhardt",
-      "names": ["Damian Meinhardt", "Julia Meinhardt", "Maria Meinhardt", "Sara Meinhardt"]
+      "names": ["Damian Meinhardt", "Julia Meinhardt", "Maria Meinhardt", "Sara Meinhardt", "Zuzanna Meinhardt"]
     },
     "wg-4d8e": {
       "greeting": "Droga Weroniko",
       "names": ["Weronika Grim"]
-    },
-    "zg-2c5f": {
-      "greeting": "Droga Zuzanno",
-      "names": ["Zuzanna Grim"]
     },
     "mrc-3a6b": {
       "greeting": "Droga Moniko i Rafale",
