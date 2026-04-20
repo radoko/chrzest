@@ -1,0 +1,135 @@
+{
+  "event": {
+    "childName": "Gniewosław Okomski",
+    "date": "2026-06-21",
+    "dateLabel": "niedziela, 21 czerwca 2026",
+    "ceremony": {
+      "time": "13:00",
+      "locationName": "Kościół pw. Najświętszego Serca Pana Jezusa",
+      "locationHint": "Koszutka, Katowice",
+      "mapsUrl": "https://koszutka.pl/",
+      "mapsLabel": "koszutka.pl"
+    },
+    "reception": {
+      "time": "15:00",
+      "locationName": "Restauracja Smak Róży",
+      "locationHint": "przyjęcie rodzinne",
+      "mapsUrl": "https://smakrozy.pl/",
+      "mapsLabel": "smakrozy.pl"
+    },
+    "parents": {
+      "mother": "Patrycja Okomska",
+      "father": "Radosław Okomski"
+    }
+  },
+  "guests": {
+    "jc-9f2a": {
+      "greeting": "Droga Joanno",
+      "names": ["Joanna Cibis"]
+    },
+    "mh-family-7b1c": {
+      "greeting": "Droga Rodzino Meinhardt",
+      "names": ["Damian Meinhardt", "Julia Meinhardt", "Maria Meinhardt", "Sara Meinhardt"]
+    },
+    "wg-4d8e": {
+      "greeting": "Droga Weroniko",
+      "names": ["Weronika Grim"]
+    },
+    "zg-2c5f": {
+      "greeting": "Droga Zuzanno",
+      "names": ["Zuzanna Grim"]
+    },
+    "mrc-3a6b": {
+      "greeting": "Droga Moniko i Rafale",
+      "names": ["Monika Cibis", "Rafał Cibis"]
+    },
+    "mjc-8e1d": {
+      "greeting": "Droga Majo",
+      "names": ["Maja Cibis"]
+    },
+    "alc-5f9a": {
+      "greeting": "Droga Aleksandro",
+      "names": ["Aleksandra Cibis"]
+    },
+    "fc-6b2c": {
+      "greeting": "Drogi Franciszku",
+      "names": ["Franciszek Cibis"]
+    },
+    "af-1d7e": {
+      "greeting": "Droga Aleksandro",
+      "names": ["Aleksandra Frank"]
+    },
+    "skc-9a3b": {
+      "greeting": "Drodzy Szymonie i Krzysztofie",
+      "names": ["Szymon Cibis", "Krzysztof Cibis"]
+    },
+    "ha-2e8f": {
+      "greeting": "Droga Hanno",
+      "names": ["Hanna Adamiec"]
+    },
+    "nsdk-4c1a": {
+      "greeting": "Drodzy Nathalie i Djordje",
+      "names": ["Nathalie Sommeson", "Djordje Kustudic"]
+    },
+    "zajdel-family-7d3e": {
+      "greeting": "Droga Rodzino Zajdel",
+      "names": ["Ilona Zajdel", "Aleksander Zajdel", "Antoni Zajdel", "Łukasz Zajdel"]
+    },
+    "kp-6a9b": {
+      "greeting": "Drogi Krzysztofie",
+      "names": ["Krzysztof Pawlak"]
+    },
+    "dc-3f5c": {
+      "greeting": "Droga Danuto",
+      "names": ["Danuta Cywińska"]
+    },
+    "pjo-8b2d": {
+      "greeting": "Drodzy Patryku i Joanno",
+      "names": ["Patryk Okomski", "Joanna Okomski"]
+    },
+    "puc-1e7a": {
+      "greeting": "Drodzy Przemku i Urszulo",
+      "names": ["Przemysław Cywiński", "Urszula Krzciuk"]
+    },
+    "arpc-5c9f": {
+      "greeting": "Drodzy Alejandro i Patrycjo",
+      "names": ["Alejandro Ramirez-Cywiński", "Patrycja Cywińska"]
+    },
+    "mt-4a8b": {
+      "greeting": "Drogi Marcinie",
+      "names": ["Marcin Tudyka"]
+    },
+    "sroga-family-2d6e": {
+      "greeting": "Droga Rodzino",
+      "names": ["Krystyna Kwon-Sroga", "Maksymilian Srogi", "Sebastian Srogi"]
+    },
+    "ot-9f1c": {
+      "greeting": "Drogi Gościu",
+      "names": ["Osoba towarzysząca"]
+    },
+    "ap-7b3a": {
+      "greeting": "Droga Agnieszko",
+      "names": ["Agnieszka Piszczek"]
+    },
+    "nowozency-6e4d": {
+      "greeting": "Drodzy Państwo Młodzi",
+      "names": ["Pani Młoda", "Pan Młody"]
+    },
+    "br-3c8f": {
+      "greeting": "Drogi Bazyli",
+      "names": ["Bazyl Reinstein"]
+    },
+    "kz-1a5b": {
+      "greeting": "Droga Katarzyno",
+      "names": ["Katarzyna Żydek"]
+    },
+    "so-8d2e": {
+      "greeting": "Drogi Sebastianie",
+      "names": ["Sebastian Okomski"]
+    },
+    "cy-5b9a": {
+      "greeting": "Drogi Cyrylu",
+      "names": ["Cyryl"]
+    }
+  }
+}

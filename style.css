@@ -1,0 +1,292 @@
+:root {
+  --bg: #eef3f8;
+  --bg-grad-a: #f4ebe0;
+  --bg-grad-b: #e8f0fa;
+  --ink: #2d3a4a;
+  --ink-soft: #536174;
+  --accent: #7aa7d9;
+  --accent-deep: #4d7cb0;
+  --gold: #c9a96b;
+  --paper: #fdfaf4;
+  --paper-edge: rgba(201, 169, 107, 0.35);
+  --shadow: 0 30px 60px -25px rgba(45, 58, 74, 0.35),
+            0 10px 25px -15px rgba(45, 58, 74, 0.2);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 20% 10%, var(--bg-grad-a) 0%, transparent 55%),
+    radial-gradient(circle at 85% 90%, var(--bg-grad-b) 0%, transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(16px, 4vw, 48px) clamp(12px, 4vw, 32px);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--paper);
+  border-radius: 4px;
+  padding: clamp(28px, 6vw, 52px) clamp(22px, 5vw, 48px);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--paper-edge);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.55;
+}
+.card::before { top: 14px; }
+.card::after { bottom: 14px; }
+
+.card__header {
+  text-align: center;
+  padding-bottom: 18px;
+}
+
+.ornament {
+  color: var(--accent-deep);
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 8px;
+}
+.ornament svg { width: 100%; height: 100%; display: block; }
+
+.eyebrow {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 4px 0 6px;
+}
+
+.title {
+  font-size: clamp(34px, 7vw, 46px);
+  font-weight: 500;
+  font-style: italic;
+  margin: 0 0 6px;
+  color: var(--accent-deep);
+  letter-spacing: 0.01em;
+}
+
+.childname {
+  font-size: clamp(22px, 5vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--ink);
+}
+
+.greeting {
+  text-align: center;
+  margin: 24px auto 8px;
+  padding: 18px 16px;
+  border-top: 1px solid rgba(201, 169, 107, 0.3);
+  border-bottom: 1px solid rgba(201, 169, 107, 0.3);
+}
+
+.greeting__label {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+
+.greeting__names {
+  font-style: italic;
+  font-size: clamp(20px, 4.5vw, 26px);
+  margin: 0;
+  color: var(--accent-deep);
+}
+
+.details { margin-top: 18px; }
+
+.detail {
+  text-align: center;
+  padding: 6px 0;
+}
+
+.detail--event { padding: 14px 0 6px; }
+
+.detail__date {
+  font-size: clamp(16px, 3.8vw, 19px);
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.detail__time {
+  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 600;
+  color: var(--accent-deep);
+  margin: 0;
+  line-height: 1;
+}
+
+.detail__kind {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 6px 0 8px;
+}
+
+.detail__place {
+  font-size: clamp(16px, 3.8vw, 19px);
+  margin: 0;
+  color: var(--ink);
+}
+
+.detail__hint {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 2px 0 8px;
+}
+
+.detail__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: var(--accent-deep);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid rgba(77, 124, 176, 0.3);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+.detail__link:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+  color: var(--ink-soft);
+}
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--paper-edge), transparent);
+}
+.divider em {
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+
+.card__footer {
+  margin-top: 22px;
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(201, 169, 107, 0.3);
+}
+
+.parents {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--ink-soft);
+  margin: 0 0 4px;
+}
+
+.parents__names {
+  font-style: italic;
+  font-size: clamp(18px, 4vw, 22px);
+  margin: 0;
+  color: var(--ink);
+}
+
+.missing {
+  width: 100%;
+  max-width: 560px;
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px dashed var(--paper-edge);
+  border-radius: 6px;
+  text-align: center;
+}
+.missing h2 {
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 8px;
+  color: var(--accent-deep);
+}
+.missing p { margin: 4px 0; color: var(--ink-soft); }
+.missing code {
+  background: rgba(122, 167, 217, 0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.offline-pill {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: rgba(45, 58, 74, 0.85);
+  color: #fff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+body.personalized .missing { display: none; }
+body:not(.personalized) .card { opacity: 0.9; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a212b;
+    --bg-grad-a: #2a2b36;
+    --bg-grad-b: #1f2a38;
+    --paper: #f8f2e7;
+  }
+}
+
+@media print {
+  body { background: #fff; }
+  .offline-pill, .missing { display: none !important; }
+  .card { box-shadow: none; border: 1px solid #ccc; }
+}

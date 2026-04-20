@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7aa7d9" />
+  <title>Chrzest Gniewosława</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Chrzest Gniewosława" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card" id="card">
+    <div class="card__header">
+      <div class="ornament" aria-hidden="true">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
+          <path d="M40 12 L40 68 M12 40 L68 40" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          <path d="M40 22c-4 6-10 6-10 14s6 12 10 12 10-4 10-12-6-8-10-14z" fill="currentColor" opacity="0.15"/>
+          <path d="M40 28v24 M30 40h20" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+        </svg>
+      </div>
+      <p class="eyebrow">Z radością zapraszamy na</p>
+      <h1 class="title">Chrzest Święty</h1>
+      <p class="childname" id="childName">Gniewosława Okomskiego</p>
+    </div>
+
+    <section class="greeting" id="greetingBlock">
+      <p class="greeting__label">Zaproszenie dla:</p>
+      <p class="greeting__names" id="greetingNames">—</p>
+    </section>
+
+    <section class="details">
+      <div class="detail">
+        <p class="detail__date" id="eventDate">niedziela, 21 czerwca 2026</p>
+      </div>
+
+      <div class="detail detail--event">
+        <p class="detail__time" id="ceremonyTime">13:00</p>
+        <p class="detail__kind">Msza Święta</p>
+        <p class="detail__place" id="ceremonyPlace">Kościół pw. Najświętszego Serca Pana Jezusa</p>
+        <p class="detail__hint" id="ceremonyHint">Koszutka, Katowice</p>
+        <a class="detail__link" id="ceremonyLink" href="https://koszutka.pl/" target="_blank" rel="noopener">
+          <span>koszutka.pl</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="divider" aria-hidden="true">
+        <span></span><em>a następnie</em><span></span>
+      </div>
+
+      <div class="detail detail--event">
+        <p class="detail__time" id="receptionTime">15:00</p>
+        <p class="detail__kind">Przyjęcie</p>
+        <p class="detail__place" id="receptionPlace">Restauracja Smak Róży</p>
+        <p class="detail__hint" id="receptionHint">przyjęcie rodzinne</p>
+        <a class="detail__link" id="receptionLink" href="https://smakrozy.pl/" target="_blank" rel="noopener">
+          <span>smakrozy.pl</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <footer class="card__footer">
+      <p class="parents">z wyrazami wdzięczności</p>
+      <p class="parents__names" id="parentsNames">Patrycja i Radosław Okomscy</p>
+    </footer>
+  </main>
+
+  <section class="missing" id="missingBlock" hidden>
+    <div class="missing__inner">
+      <h2>Zaproszenie</h2>
+      <p>Aby zobaczyć spersonalizowane zaproszenie, otwórz przesłany link z unikalnym kodem.</p>
+      <p class="missing__hint">Przykład: <code>…/#twoj-kod</code></p>
+    </div>
+  </section>
+
+  <div class="offline-pill" id="offlinePill" hidden>Tryb offline</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

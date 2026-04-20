@@ -1,0 +1,20 @@
+{
+  "name": "Chrzest Gniewosława",
+  "short_name": "Chrzest",
+  "description": "Zaproszenie na Chrzest Święty Gniewosława Okomskiego — 21 czerwca 2026",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef3f8",
+  "theme_color": "#7aa7d9",
+  "lang": "pl-PL",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
