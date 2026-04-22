@@ -71,9 +71,13 @@
       "greeting": "Drodzy Przemku i Urszulo",
       "names": ["Przemysław Cywiński", "Urszula Krzciuk"]
     },
-    "arpc-5c9f": {
-      "greeting": "Drodzy Alejandro i Patrycjo",
-      "names": ["Alejandro Ramirez-Cywiński", "Patrycja Cywińska"]
+    "ar-5c9f": {
+      "greeting": "Drogi Alejandro",
+      "names": ["Alejandro Ramirez-Cywiński"]
+    },
+    "pc-8a3d": {
+      "greeting": "Droga Patrycjo",
+      "names": ["Patrycja Cywińska"]
     },
     "mt-4a8b": {
       "greeting": "Drogi Marcinie",
