@@ -51,13 +51,9 @@
       "greeting": "Drogi Franciszku",
       "names": ["Franciszek Cibis"]
     },
-    "af-1d7e": {
-      "greeting": "Droga Aleksandro",
-      "names": ["Aleksandra Frank"]
-    },
-    "skc-9a3b": {
-      "greeting": "Drodzy Szymonie i Krzysztofie",
-      "names": ["Szymon Cibis", "Krzysztof Cibis"]
+    "afsk-3e8b": {
+      "greeting": "Drodzy Aleksandro, Szymonie i Krzysztofie",
+      "names": ["Aleksandra Frank", "Szymon Cibis", "Krzysztof Cibis"]
     },
     "ha-2e8f": {
       "greeting": "Droga Hanno",
