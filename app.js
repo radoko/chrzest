@@ -127,12 +127,145 @@
       showMissing();
     }
 
+    initCalendar();
+
     window.addEventListener("hashchange", () => {
       const newHash = readHashFromUrl();
       if (newHash && data.guests && data.guests[newHash]) {
         persistHash(newHash);
         applyGuest(data.guests[newHash]);
       }
+    });
+  }
+
+  // ── Calendar integration ────────────────────────────────────────────
+  const EVENTS = [
+    {
+      uid: "msza-gniewoslaw-chrzest-2026@radoko.github.io",
+      title: "Chrzest Gniewosława — Msza Święta",
+      startUtc: "20260621T110000Z",
+      endUtc:   "20260621T123000Z",
+      startLocal: "2026-06-21T13:00:00+02:00",
+      endLocal:   "2026-06-21T14:30:00+02:00",
+      location: "Kościół pw. Najświętszego Serca Pana Jezusa, Koszutka, Katowice",
+      description: "Uroczystość Sakramentu Chrztu Świętego Gniewosława Okomskiego.\\nKoszutka: https://koszutka.pl/",
+      url: "https://koszutka.pl/",
+    },
+    {
+      uid: "przyjecie-gniewoslaw-chrzest-2026@radoko.github.io",
+      title: "Chrzest Gniewosława — Przyjęcie",
+      startUtc: "20260621T130000Z",
+      endUtc:   "20260621T180000Z",
+      startLocal: "2026-06-21T15:00:00+02:00",
+      endLocal:   "2026-06-21T20:00:00+02:00",
+      location: "Restauracja Smak Róży",
+      description: "Przyjęcie rodzinne po chrzcie Gniewosława.\\nSmak Róży: https://smakrozy.pl/",
+      url: "https://smakrozy.pl/",
+    },
+  ];
+
+  function icsEscape(s) {
+    return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  }
+
+  function nowStamp() {
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, "0");
+    return d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + "T" +
+           p(d.getUTCHours()) + p(d.getUTCMinutes()) + p(d.getUTCSeconds()) + "Z";
+  }
+
+  function buildICS() {
+    const lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Gniewoslaw Chrzest//PL",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+    ];
+    const stamp = nowStamp();
+    for (const e of EVENTS) {
+      lines.push(
+        "BEGIN:VEVENT",
+        "UID:" + e.uid,
+        "DTSTAMP:" + stamp,
+        "DTSTART:" + e.startUtc,
+        "DTEND:" + e.endUtc,
+        "SUMMARY:" + icsEscape(e.title),
+        "LOCATION:" + icsEscape(e.location),
+        "DESCRIPTION:" + icsEscape(e.description),
+        "URL:" + e.url,
+        "END:VEVENT"
+      );
+    }
+    lines.push("END:VCALENDAR");
+    return lines.join("\r\n");
+  }
+
+  function downloadICS() {
+    const blob = new Blob([buildICS()], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "chrzest-gniewoslaw.ics";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+  }
+
+  function googleCalUrl(e) {
+    const p = new URLSearchParams({
+      action: "TEMPLATE",
+      text: e.title,
+      dates: e.startUtc + "/" + e.endUtc,
+      location: e.location,
+      details: e.description.replace(/\\n/g, "\n"),
+    });
+    return "https://calendar.google.com/calendar/render?" + p.toString();
+  }
+
+  function outlookCalUrl(e) {
+    const p = new URLSearchParams({
+      path: "/calendar/action/compose",
+      rru: "addevent",
+      subject: e.title,
+      startdt: e.startLocal,
+      enddt:   e.endLocal,
+      location: e.location,
+      body: e.description.replace(/\\n/g, "\n"),
+    });
+    return "https://outlook.live.com/calendar/0/deeplink/compose?" + p.toString();
+  }
+
+  function initCalendar() {
+    const btn = $("calendarBtn");
+    const menu = $("calendarMenu");
+    const googleLink = $("googleCalLink");
+    const outlookLink = $("outlookCalLink");
+    if (!btn || !menu) return;
+
+    googleLink.href = googleCalUrl(EVENTS[0]);
+    outlookLink.href = outlookCalUrl(EVENTS[0]);
+
+    function toggleMenu(force) {
+      const willOpen = force === undefined ? !menu.classList.contains("open") : force;
+      menu.classList.toggle("open", willOpen);
+      btn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    }
+    btn.addEventListener("click", (e) => { e.stopPropagation(); toggleMenu(); });
+    menu.addEventListener("click", (e) => {
+      const action = e.target.closest("[data-action]");
+      if (action && action.dataset.action === "ics") {
+        e.preventDefault();
+        downloadICS();
+      }
+      toggleMenu(false);
+    });
+    document.addEventListener("click", (e) => {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) toggleMenu(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleMenu(false);
     });
   }
 

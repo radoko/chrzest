@@ -474,6 +474,103 @@
       margin-top: 3px;
     }
 
+    .calendar-wrap {
+      margin: 18px auto 4px;
+      position: relative;
+      display: inline-block;
+    }
+    .calendar-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-smallcaps);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 11px;
+      color: var(--gold-deep);
+      background: rgba(250, 243, 222, 0.5);
+      border: 1px solid var(--gold);
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      font-weight: 500;
+    }
+    .calendar-btn:hover,
+    .calendar-btn:focus-visible {
+      background: var(--gold-deep);
+      color: var(--paper);
+      outline: none;
+    }
+    .calendar-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .calendar-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--paper);
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 12px 30px -12px var(--paper-shadow);
+      min-width: 220px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 6;
+    }
+    .calendar-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .calendar-menu::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background: var(--paper);
+      border-left: 1px solid var(--gold-light);
+      border-top: 1px solid var(--gold-light);
+    }
+    .calendar-menu button,
+    .calendar-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 12px 16px;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+      transition: background 0.18s;
+    }
+    .calendar-menu button + button,
+    .calendar-menu button + a,
+    .calendar-menu a + a,
+    .calendar-menu a + button {
+      border-top: 1px solid rgba(184, 147, 94, 0.15);
+    }
+    .calendar-menu button:hover,
+    .calendar-menu a:hover {
+      background: rgba(216, 184, 122, 0.15);
+    }
+    .calendar-menu__icon {
+      width: 16px;
+      height: 16px;
+      color: var(--eucalyptus-dark);
+      flex-shrink: 0;
+    }
+
     .close-btn {
       position: absolute;
       top: 10px;
@@ -551,6 +648,31 @@
             <p class="event__place">Restauracja Smak Róży</p>
             <p class="event__hint">wspólna celebracja i poczęstunek</p>
             <a class="event__link" href="https://smakrozy.pl/" target="_blank" rel="noopener">smakrozy.pl</a>
+          </div>
+
+          <div class="calendar-wrap">
+            <button class="calendar-btn" id="calendarBtn" type="button" aria-haspopup="true" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2"/>
+                <path d="M3 10h18M8 3v4M16 3v4"/>
+                <circle cx="12" cy="15" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+              Dodaj do kalendarza
+            </button>
+            <div class="calendar-menu" id="calendarMenu" role="menu">
+              <button type="button" data-action="ics" role="menuitem">
+                <svg class="calendar-menu__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+                <span>Pobierz plik .ics</span>
+              </button>
+              <a href="#" id="googleCalLink" target="_blank" rel="noopener" role="menuitem">
+                <svg class="calendar-menu__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+                <span>Google Calendar</span>
+              </a>
+              <a href="#" id="outlookCalLink" target="_blank" rel="noopener" role="menuitem">
+                <svg class="calendar-menu__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9 6 9-6M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l9-4 9 4"/></svg>
+                <span>Outlook Web</span>
+              </a>
+            </div>
           </div>
 
           <footer class="inside__footer">
@@ -663,6 +785,125 @@
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
     });
     closeBtn.addEventListener("click", (e) => { e.stopPropagation(); close(); });
+
+    // ── Calendar integration ────────────────────────────────────────────
+    const EVENTS = [
+      {
+        uid: "msza-gniewoslaw-chrzest-2026@radoko.github.io",
+        title: "Chrzest Gniewosława — Msza Święta",
+        start: { local: "20260621T130000", utc: "20260621T110000Z" },
+        end:   { local: "20260621T143000", utc: "20260621T123000Z" },
+        location: "Kościół pw. Najświętszego Serca Pana Jezusa, Koszutka, Katowice",
+        description: "Uroczystość Sakramentu Chrztu Świętego Gniewosława Okomskiego.\\nKoszutka: https://koszutka.pl/",
+        url: "https://koszutka.pl/",
+      },
+      {
+        uid: "przyjecie-gniewoslaw-chrzest-2026@radoko.github.io",
+        title: "Chrzest Gniewosława — Przyjęcie",
+        start: { local: "20260621T150000", utc: "20260621T130000Z" },
+        end:   { local: "20260621T200000", utc: "20260621T180000Z" },
+        location: "Restauracja Smak Róży",
+        description: "Przyjęcie rodzinne po chrzcie Gniewosława.\\nSmak Róży: https://smakrozy.pl/",
+        url: "https://smakrozy.pl/",
+      },
+    ];
+
+    function icsEscape(s) {
+      return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+    }
+    function nowStamp() {
+      const d = new Date();
+      const p = (n) => String(n).padStart(2, "0");
+      return `${d.getUTCFullYear()}${p(d.getUTCMonth()+1)}${p(d.getUTCDate())}T${p(d.getUTCHours())}${p(d.getUTCMinutes())}${p(d.getUTCSeconds())}Z`;
+    }
+    function buildICS() {
+      const lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Gniewoslaw Chrzest//PL",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+      ];
+      const stamp = nowStamp();
+      for (const e of EVENTS) {
+        lines.push(
+          "BEGIN:VEVENT",
+          `UID:${e.uid}`,
+          `DTSTAMP:${stamp}`,
+          `DTSTART:${e.start.utc}`,
+          `DTEND:${e.end.utc}`,
+          `SUMMARY:${icsEscape(e.title)}`,
+          `LOCATION:${icsEscape(e.location)}`,
+          `DESCRIPTION:${icsEscape(e.description)}`,
+          `URL:${e.url}`,
+          "END:VEVENT"
+        );
+      }
+      lines.push("END:VCALENDAR");
+      return lines.join("\r\n");
+    }
+    function downloadICS() {
+      const blob = new Blob([buildICS()], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "chrzest-gniewoslaw.ics";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+    }
+    function googleCalUrl(e) {
+      const p = new URLSearchParams({
+        action: "TEMPLATE",
+        text: e.title,
+        dates: `${e.start.utc}/${e.end.utc}`,
+        location: e.location,
+        details: e.description.replace(/\\n/g, "\n"),
+      });
+      return "https://calendar.google.com/calendar/render?" + p.toString();
+    }
+    function outlookCalUrl(e) {
+      const toIso = (s) => `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}T${s.slice(9,11)}:${s.slice(11,13)}:${s.slice(13,15)}`;
+      const p = new URLSearchParams({
+        path: "/calendar/action/compose",
+        rru: "addevent",
+        subject: e.title,
+        startdt: toIso(e.start.local) + "+02:00",
+        enddt:   toIso(e.end.local)   + "+02:00",
+        location: e.location,
+        body: e.description.replace(/\\n/g, "\n"),
+      });
+      return "https://outlook.live.com/calendar/0/deeplink/compose?" + p.toString();
+    }
+
+    const calendarBtn = document.getElementById("calendarBtn");
+    const calendarMenu = document.getElementById("calendarMenu");
+    const googleLink = document.getElementById("googleCalLink");
+    const outlookLink = document.getElementById("outlookCalLink");
+
+    googleLink.href = googleCalUrl(EVENTS[0]);
+    outlookLink.href = outlookCalUrl(EVENTS[0]);
+
+    function toggleMenu(force) {
+      const willOpen = force !== undefined ? force : !calendarMenu.classList.contains("open");
+      calendarMenu.classList.toggle("open", willOpen);
+      calendarBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    }
+    calendarBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleMenu(); });
+    calendarMenu.addEventListener("click", (e) => {
+      const action = e.target.closest("[data-action]");
+      if (action && action.dataset.action === "ics") {
+        e.preventDefault();
+        downloadICS();
+      }
+      toggleMenu(false);
+    });
+    document.addEventListener("click", (e) => {
+      if (!calendarBtn.contains(e.target) && !calendarMenu.contains(e.target)) toggleMenu(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleMenu(false);
+    });
   </script>
 </body>
 </html>
