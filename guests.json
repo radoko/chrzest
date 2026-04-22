@@ -23,9 +23,9 @@
     }
   },
   "guests": {
-    "jc-9f2a": {
-      "greeting": "Droga Joanno",
-      "names": ["Joanna Cibis"]
+    "jfc-7b4d": {
+      "greeting": "Drodzy Joanno i Franciszku",
+      "names": ["Joanna Cibis", "Franciszek Cibis"]
     },
     "mh-family-7b1c": {
       "greeting": "Droga Rodzino Meinhardt",
@@ -35,21 +35,9 @@
       "greeting": "Droga Weroniko",
       "names": ["Weronika Grim"]
     },
-    "mrc-3a6b": {
-      "greeting": "Droga Moniko i Rafale",
-      "names": ["Monika Cibis", "Rafał Cibis"]
-    },
-    "mjc-8e1d": {
-      "greeting": "Droga Majo",
-      "names": ["Maja Cibis"]
-    },
-    "alc-5f9a": {
-      "greeting": "Droga Aleksandro",
-      "names": ["Aleksandra Cibis"]
-    },
-    "fc-6b2c": {
-      "greeting": "Drogi Franciszku",
-      "names": ["Franciszek Cibis"]
+    "cibis-family-5a9c": {
+      "greeting": "Droga Rodzino Cibis",
+      "names": ["Monika Cibis", "Rafał Cibis", "Aleksandra Cibis", "Maja Cibis"]
     },
     "afsk-3e8b": {
       "greeting": "Drodzy Aleksandro, Szymonie i Krzysztofie",
