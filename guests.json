@@ -110,6 +110,10 @@
     "cy-5b9a": {
       "greeting": "Drogi Cyrylu",
       "names": ["Cyryl"]
+    },
+    "glados-2f7b": {
+      "greeting": "Drodzy Bożeno i Edwardzie",
+      "names": ["Bożena Glados", "Edward Glados"]
     }
   }
 }
