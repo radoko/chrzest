@@ -114,6 +114,10 @@
     "glados-2f7b": {
       "greeting": "Drodzy Bożeno i Edwardzie",
       "names": ["Bożena Glados", "Edward Glados"]
+    },
+    "mao-4d1e": {
+      "greeting": "Drodzy Mariuszu i Aleksandro",
+      "names": ["Mariusz Okomski", "Aleksandra Okomska"]
     }
   }
 }
