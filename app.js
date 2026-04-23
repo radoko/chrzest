@@ -154,9 +154,9 @@
     {
       uid: "przyjecie-gniewoslaw-chrzest-2026@radoko.github.io",
       title: "Chrzest Gniewosława — Przyjęcie",
-      startUtc: "20260621T130000Z",
+      startUtc: "20260621T123000Z",
       endUtc:   "20260621T180000Z",
-      startLocal: "2026-06-21T15:00:00+02:00",
+      startLocal: "2026-06-21T14:30:00+02:00",
       endLocal:   "2026-06-21T20:00:00+02:00",
       location: "Restauracja Smak Róży",
       description: "Przyjęcie rodzinne po chrzcie Gniewosława.\\nSmak Róży: https://smakrozy.pl/",
