@@ -99,13 +99,9 @@
       "greeting": "Drodzy Państwo Młodzi",
       "names": ["Pani Młoda", "Pan Młody"]
     },
-    "br-3c8f": {
-      "greeting": "Drogi Bazyli",
-      "names": ["Bazyl Reinstein"]
-    },
-    "kz-1a5b": {
-      "greeting": "Droga Katarzyno",
-      "names": ["Katarzyna Żydek"]
+    "brkz-9e2d": {
+      "greeting": "Drodzy Bazylu i Katarzyno",
+      "names": ["Bazyl Reinstein", "Katarzyna Żydek"]
     },
     "so-8d2e": {
       "greeting": "Drogi Sebastianie",
