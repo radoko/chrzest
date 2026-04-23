@@ -1,4 +1,4 @@
-const CACHE_VERSION = "gniewko-chrzest-v2";
+const CACHE_VERSION = "gniewko-chrzest-v3";
 const FONTS_CACHE = "gniewko-chrzest-fonts-v1";
 const CORE_ASSETS = [
   "./",
@@ -42,6 +42,22 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") self.skipWaiting();
+});
+
+function networkFirst(req) {
+  return fetch(req)
+    .then((res) => {
+      if (res && res.status === 200 && res.type === "basic") {
+        const clone = res.clone();
+        caches.open(CACHE_VERSION).then((cache) => cache.put(req, clone));
+      }
+      return res;
+    })
+    .catch(() => caches.match(req));
+}
+
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
@@ -67,16 +83,8 @@ self.addEventListener("fetch", (event) => {
 
   if (url.origin !== self.location.origin) return;
 
-  if (req.mode === "navigate") {
-    event.respondWith(
-      fetch(req)
-        .then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_VERSION).then((cache) => cache.put(req, clone));
-          return res;
-        })
-        .catch(() => caches.match("./index.html"))
-    );
+  if (url.pathname.endsWith("/guests.json") || req.mode === "navigate") {
+    event.respondWith(networkFirst(req));
     return;
   }
 
